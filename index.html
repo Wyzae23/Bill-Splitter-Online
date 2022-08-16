@@ -5,21 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bill Splitter</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="header-wrapper">
-        <div class="header-content">
-            Restaraunt Bill Splitter
+        Restaraunt Bill Splitter
+    </div>
+
+    <div class="directions-wrapper">
+        <div class="directions-heading">
+            <h2>How to Use</h2>
         </div>
+
+        <div class="directions">
+            Use by first entering the number of people in your party. When you have entered the number of people, press the "Enter" button
+            and text fields will appear for you to enter in each person's name and the price of that person's meal. In addition, enter in the final
+            price of the entire bill. Hit the "enter" button below and you will see how much each person's correct payment is after adjusting for tax
+            and tip.
+        </div>
+
     </div>
 
     <div class="main-wrapper">
         <div class="main-wrapper-left">
+            <div class="main-wrapper-left-directions">
+                Enter the number of people in your party
+            </div>
 
+            <div class="get-party-size-wrapper">
+                <label class="custom-field">
+                    <input type="text" id="party-size" required>
+                    <span class="placeholder">Number of People in Party</span>
+                </label>
+                
+            </div>
         </div>
 
         <div class="main-wrapper-right">
-            
+
         </div>
     </div>
 </body>
