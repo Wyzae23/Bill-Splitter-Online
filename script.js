@@ -29,7 +29,7 @@ function getPartySize()
         // break
         let personNameInput = document.createElement('input');
         personNameInput.type="text";
-        personNameInput.id="personInfo";
+        personNameInput.id="personInfoName" + i;
         personNameInput.setAttribute("required", "");
 
         let personNameSpan = document.createElement('span');
@@ -38,7 +38,7 @@ function getPartySize()
 
         let personPaymentInput = document.createElement('input');
         personPaymentInput.type="text";
-        personPaymentInput.id="personInfo";
+        personPaymentInput.id="personInfoPayment" + i;
         personPaymentInput.setAttribute("required", "");
 
         let personPaymentSpan = document.createElement('span');
@@ -68,10 +68,10 @@ function getPartySize()
     let totalPrice = document.createElement('label');
     totalPrice.className="custom-field";
 
-    totalPrice.innerHTML='<label class="custom-field">\n\t<input type="text" id="partySize" required>\n<span class="placeholder">Final Price</span>\n</label>'
+    totalPrice.innerHTML='<label class="custom-field">\n\t<input type="text" id="totalPriceLabel" required>\n<span class="placeholder">Final Price</span>\n</label>'
 
     let enterBtn = document.createElement('button');
-    enterBtn.onclick="calculate()";
+    enterBtn.onclick=calculate;
     enterBtn.id="calculate-button";
     enterBtn.style.height="40px";
     enterBtn.innerHTML='<span class="button-text">Calculate</span>\n<span class="button-icon">\n\t<ion-icon name="enter-outline"></ion-icon>\n</span>';
@@ -83,5 +83,59 @@ function getPartySize()
 
 function calculate()
 {
+    let group = document.getElementsByClassName("person-info");
+    let groupInfo = [];
+    let originalCost = parseFloat(0);
+    let finalPrice = document.getElementById("totalPriceLabel").value;
+    for(let i = 0; i < group.length; i++)
+    {
+        let person = [];
+        let name = document.getElementById("personInfoName" + i).value;
+        let payment = document.getElementById("personInfoPayment" + i).value;
+        payment = parseFloat(payment);
+        person[0] = name;
+        person[1] = payment;
+        groupInfo[i] = person;
+        originalCost = originalCost + payment;
+    }
+    let multFactor = parseFloat(1);
+    if(originalCost > 0)
+    {
+        multFactor = finalPrice / originalCost;
+    }
 
+    for(let i = 0; i < groupInfo.length; i++)
+    {
+        groupInfo[i][1] *= multFactor;
+    }
+
+    let rightSideWrapper = document.getElementsByClassName("main-wrapper-right")[0];
+    rightSideWrapper.innerHTML="";
+    let rightSideWrapperHeader = document.createElement('div');
+    rightSideWrapperHeader.className = "right-side-wrapper-header";
+    rightSideWrapperHeader.textContent = "Final Payments";
+    rightSideWrapperHeader.style.fontSize = "36px";
+    let nameList = document.createElement('div');
+    nameList.className = "name-list";
+    let paymentList = document.createElement('div');
+    paymentList.className = "payment-list";
+    rightSideWrapper.append(rightSideWrapperHeader);
+
+    let mainWrapperRightContent = document.createElement('div');
+    mainWrapperRightContent.className = "main-wrapper-right-content";
+    for(let i = 0; i < groupInfo.length; i++)
+    {
+        let personName = document.createElement('div');
+        personName.className="main-wrapper-right-person-name";
+        let personPayment = document.createElement('div');
+        personPayment.className="main-wrapper-right-person-payment";
+
+        personName.textContent = groupInfo[i][0] + ":";
+        personPayment.textContent = "$" + groupInfo[i][1];
+
+        nameList.append(personName);
+        paymentList.append(personPayment);
+    }
+    mainWrapperRightContent.append(nameList, paymentList);
+    rightSideWrapper.append(mainWrapperRightContent);
 }

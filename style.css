@@ -127,3 +127,43 @@ button:hover{
     flex: 1;
 }
 
+.main-wrapper-left-directions{
+    padding: 20px;
+    padding-bottom: 5px;
+}
+
+.main-wrapper-right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-wrapper-right-content{
+    display: flex;
+    gap: 50px;
+    justify-content: space-between;
+    font-size: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 75%
+}
+
+.name-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.payment-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.main-wrapper-right-person-name{
+    text-align: right;
+}
+
+.right-side-wrapper-header{
+    margin-bottom: 40px;
+}
