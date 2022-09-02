@@ -74,6 +74,7 @@ function getPartySize()
     enterBtn.onclick=calculate;
     enterBtn.id="calculate-button";
     enterBtn.style.height="40px";
+    enterBtn.style.color="white";
     enterBtn.innerHTML='<span class="button-text">Calculate</span>\n<span class="button-icon">\n\t<ion-icon name="enter-outline"></ion-icon>\n</span>';
     enterBtn.className="enter-button"
 
