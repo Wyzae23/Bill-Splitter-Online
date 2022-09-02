@@ -107,6 +107,7 @@ function calculate()
     for(let i = 0; i < groupInfo.length; i++)
     {
         groupInfo[i][1] *= multFactor;
+        groupInfo[i][1] = Math.round(100*groupInfo[i][1])/100;
     }
 
     let rightSideWrapper = document.getElementsByClassName("main-wrapper-right")[0];
@@ -123,6 +124,22 @@ function calculate()
 
     let mainWrapperRightContent = document.createElement('div');
     mainWrapperRightContent.className = "main-wrapper-right-content";
+
+    let nameListHeader = document.createElement('div');
+    nameListHeader.className = "name-list-header";
+    nameListHeader.textContent = "Name";
+    nameListHeader.style.fontSize = "30px";
+    nameListHeader.style.marginBottom = "20px";
+
+    let paymentListHeader = document.createElement('div');
+    paymentListHeader.className = "payment-list-header";
+    paymentListHeader.textContent = "Payment";
+    paymentListHeader.style.fontSize = "30px";
+    paymentListHeader.style.marginBottom = "20px";
+
+    nameList.append(nameListHeader);
+    paymentList.append(paymentListHeader);
+
     for(let i = 0; i < groupInfo.length; i++)
     {
         let personName = document.createElement('div');
