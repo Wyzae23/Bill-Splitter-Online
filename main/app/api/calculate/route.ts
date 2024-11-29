@@ -15,7 +15,7 @@ export async function POST(req: NextRequest): Promise<Response> {
         console.log(`Total Bill: ${totalBill}`);
         
         let price = 0.0;
-        let payments: { [key: string]: number } = {}; 
+        const payments: { [key: string]: number } = {}; 
 
         // Calculate the payments
         for (let i = 0; i < people.length; i += 1) {
@@ -27,11 +27,11 @@ export async function POST(req: NextRequest): Promise<Response> {
             payments[people[i].name] = tempPayment;
         }
 
-        let multiplier = totalBill / price;
+        const multiplier = totalBill / price;
         console.log(`Payments: ${JSON.stringify(payments)}`);
 
         // Apply multiplier to final payments
-        for (let key in payments) {
+        for (const key in payments) {
             if (payments.hasOwnProperty(key)) {
                 payments[key] = payments[key] * multiplier;
             }
